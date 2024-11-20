@@ -17,9 +17,9 @@ state_pattern = re.compile(r'\b(?:' + '|'.join(STATE_ABBREVIATIONS) + r')\b')
 prefix_pattern = re.compile(r'\b(?:' + '|'.join(PREFIXES) + r')\s*\d+')  # Allow whitespace between prefix and numbers
 date_pattern = re.compile(r'\b\d{2}/\d{2}/\d{4}\b')  # Matches dates in format XX/XX/XXXX
 
-for year in range(2020, 2024):  # Processing years 2012 to 2023
+for year in range(2008, 2024):  # Processing years 2008 to 2023
     # Load the Excel file
-    df = pd.read_excel(f"../Data/Enviormental Health Bills/bills_data_{year}.xlsx")
+    df = pd.read_excel(f"../Data/Immigration Legislation Bills/bills_data_{year}.xlsx")
     
     # Drop rows with no 'Bill Name'
     df = df.dropna(subset=['Bill Name'])
@@ -62,6 +62,6 @@ for year in range(2020, 2024):  # Processing years 2012 to 2023
     df = df.drop(columns=['Has Link', 'Valid Bill Name'])
 
     # Save the processed DataFrame to an Excel file
-    df.to_excel(f"../Data/Enviormental Health Bills/data_{year}.xlsx", index=False)
+    df.to_excel(f"../Data/Immigration Legislation Bills/data_{year}.xlsx", index=False)
 
     print(f"Processed data for {year}.")
